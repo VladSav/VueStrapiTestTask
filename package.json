@@ -1,0 +1,7 @@
+{
+  "name": "vue-strapi-test-task",
+  "version": "1.0.0",
+  "description": "The task is to create a simple cookbook website that will present the visitors recipes divided to categories.",
+  "author": "Vlad Savilo",
+  "license": "ISC"
+}
