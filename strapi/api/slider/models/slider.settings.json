@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sliders",
+  "info": {
+    "name": "Slider",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slides": {
+      "type": "dynamiczone",
+      "components": [
+        "recipes-lists.slide"
+      ]
+    }
+  }
+}

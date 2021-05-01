@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ingedietns_cat_ingredients",
+  "info": {
+    "name": "ingredient",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    }
+  }
+}

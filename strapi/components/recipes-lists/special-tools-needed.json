@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_recipes_lists_special_tools_neededs",
+  "info": {
+    "name": "special_tool_needed",
+    "icon": "snowplow",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

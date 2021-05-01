@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_recipes_lists_slides",
+  "info": {
+    "name": "Slide",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

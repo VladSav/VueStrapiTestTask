@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "name": "Recipes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "photography": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "difficult": {
+      "type": "integer",
+      "max": 5,
+      "min": 1
+    },
+    "time_to_prepare": {
+      "type": "integer"
+    },
+    "directions": {
+      "type": "richtext",
+      "required": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "ingredients": {
+      "type": "dynamiczone",
+      "components": [
+        "recipes-lists.ingredients"
+      ]
+    },
+    "special_tools_needed": {
+      "type": "dynamiczone",
+      "components": [
+        "recipes-lists.special-tools-needed"
+      ]
+    },
+    "comments": {
+      "collection": "comments",
+      "via": "recipe"
+    },
+    "categories": {
+      "via": "recipes",
+      "collection": "categories"
+    }
+  }
+}
