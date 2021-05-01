@@ -290,6 +290,11 @@
   margin: 0;
   padding: 0
 }
+figure {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
+}
 figure img {
   width: 100%;
   vertical-align: middle
@@ -307,4 +312,58 @@ figure img {
   object-fit: cover;
   width: 100%;
   height: auto
+}
+.recipe__title {
+  text-align: center
+}
+.recipe__author {
+  text-align: left
+}
+.recipe__categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  list-style: none
+}
+.recipe__categories li {
+  padding: 6px 10px;
+  margin-right: 10px;
+  border: 1px solid #000;
+  border-radius: 20px
+}
+.recipe__categories li:last-child {
+  margin-right: 0
+}
+.recipe__difficulty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start
+}
+.recipe__difficulty img {
+  max-width: 20px
+}
+.recipe__special-tools {
+  padding-left: 20px
+}
+.recipe__special-tools li {
+  text-align: left
+}
+.recipe__ingredients {
+  padding-left: 20px
+}
+.recipe__ingredients li {
+  text-align: left
+}
+.recipe__directions {
+  white-space: break-spaces;
+  margin: 40px 0
 }

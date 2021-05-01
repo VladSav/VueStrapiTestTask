@@ -1,13 +1,58 @@
-<b-container fluid class="recipe-page">
+<b-container v-if="recipe" fluid class="recipe recipe-page">
+
+    <b-row>
+        <b-col class="col-12">
+            <h1 class="recipe__title">{{recipe.title}}</h1>
+        </b-col>
+    </b-row>
+
     <b-row>
         <b-col class="col-6">
             <figure>
-                <img :src="getImage(recipe, 'large')"/>
+                <img :src="getImage(recipe, 'medium')"/>
             </figure>
         </b-col>
         <b-col class="col-6">
-            <p>{{recipe.title}}</p>
-            <p>{{recipe}}</p>
+            <p class="recipe__author">Author: {{recipe.author ? recipe.author.username : 'unknown'}}</p>
+
+            <ul class="recipe__categories">
+                <li v-for="category of recipe.categories" :key="'recipe-categories-' + category.id">
+                    {{category.title}}
+                </li>
+            </ul>
+
+            <p class="recipe__time">Time to prepare: {{recipe.time_to_prepare ? recipe.time_to_prepare + ' minutes' : 'unknown'}}</p>
+
+            <div class="recipe__difficulty">
+                <span class="mr-10">Difficult:</span>
+                <img v-for="diff of recipe.difficult" :key="'recipe-difficult-' + diff" src="@/assets/star-solid.svg" alt="star solid"/>
+            </div>
+            
+            <ul class="recipe__special-tools">
+                <li v-for="specialTool of recipe.special_tools_needed" :key="'recipe-special-tool-' + specialTool.id">
+                    {{specialTool.title}}
+                </li>
+            </ul>
+        </b-col>
+
+        <b-col class="col-12">
+            <ul class="recipe__ingredients">
+                <li v-for="ingredient of recipe.ingredients" :key="'recipe-ingredients-' + ingredient.id">
+                    {{ingredient.title}}
+                </li>
+            </ul>
+        </b-col>
+
+        <b-col class="col-12">
+            <div class="recipe__directions" v-html="recipe.directions"></div>
+        </b-col>
+    </b-row>
+
+    <b-row>
+        <b-col v-for="comment of recipe.comments" :key="'recipe-comments-' + comment.id" class="recipe__comment col-12">
+            <blockquote class="blockquote">
+                <p>{{comment.content}}</p>
+            </blockquote>
         </b-col>
     </b-row>
 </b-container>

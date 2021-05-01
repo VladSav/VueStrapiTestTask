@@ -10,6 +10,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'swiper/swiper-bundle.css'
 
+// TODO: delete me later
+import '../public/style.min.css'
+
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
