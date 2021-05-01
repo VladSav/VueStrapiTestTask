@@ -1,0 +1,13 @@
+<b-container fluid class="recipe-page">
+    <b-row>
+        <b-col class="col-6">
+            <figure>
+                <img :src="getImage(recipe, 'large')"/>
+            </figure>
+        </b-col>
+        <b-col class="col-6">
+            <p>{{recipe.title}}</p>
+            <p>{{recipe}}</p>
+        </b-col>
+    </b-row>
+</b-container>
