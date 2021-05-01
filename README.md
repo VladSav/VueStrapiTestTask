@@ -9,7 +9,9 @@ In root folder you can find ***data.db*** file. You should paste it into the ***
 Then you can use comand **docker compose up** to run application
 
 Login: user@gmail.com
+
 Password: dev123DEV
 
+---
 
 ## Vue
