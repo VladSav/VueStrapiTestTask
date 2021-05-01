@@ -1,0 +1,12 @@
+<div class="swiper-component">
+    <div v-swiper:mainPageSwiper="swiperOption">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" :key="'main-page-slide-' + slide.id" v-for="slide in slides">
+                <picture>
+                    <source v-for="image of getImageFormats(slide)" :media="`(min-width: ${image.width}px)`" :srcset="'http://localhost:1337' + image.url">
+                    <img :src="'http://localhost:1337' + getImageFormats(slide)[0].url" :alt="getImageFormats(slide).alternativeText || slide.text">
+                </picture>
+          </div>
+        </div>
+      </div>
+</div>

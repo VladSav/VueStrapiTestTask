@@ -1,0 +1,151 @@
+<div>
+    <b-container>
+        
+        <!-- <b-row>
+            <b-col class="col-12">Categories</b-col>
+            <b-col v-for="(category, index) of categories" 
+                :key="`category-${category.id}`"
+                class="col-3"
+                @click="[selectedCategory = index, currentPage = 1]">
+                
+                <figure>
+                    <img :src="getFirstImage(category.image, 'small')"/>
+                </figure>
+
+                <p>{{category.title}}</p>
+
+            </b-col>
+        </b-row> -->
+
+        <!-- <b-row>
+            <b-col class="col-12">Recipes</b-col>
+        </b-row> -->
+
+        <b-row class="pt-20">
+
+            <b-col class="col-3">
+
+                <div class="d-flex justify-content-between align-items-center mb-3"
+                    @click="filtersCollapse.search = !filtersCollapse.search">
+                    <span>Title</span>
+                    <b-icon-chevron-up :rotate="filtersCollapse.search ? 180 : 0"></b-icon-chevron-up>
+                </div>
+                <b-collapse id="filters-collapse-search" :visible="filtersCollapse.search">
+                    <b-form-input v-model="filters.searchText"></b-form-input>
+                </b-collapse>
+                <hr/>
+
+                <div class="d-flex justify-content-between align-items-center mb-3" 
+                    @click="filtersCollapse.categories = !filtersCollapse.categories">
+                    <span>Categories</span>
+                    <b-icon-chevron-up :rotate="filtersCollapse.categories ? 180 : 0"></b-icon-chevron-up>
+                </div>
+                <b-collapse id="filters-collapse-categories" :visible="filtersCollapse.categories">
+                    <b-form-group>
+                        <b-form-checkbox
+                            v-model="allSelected"
+                            :indeterminate="indeterminate"
+                            @change="toggleAllCategories"
+                            class="d-flex justify-content-start mb-2">
+                            {{ allSelected ? 'Un-select All' : 'Select All' }}
+                        </b-form-checkbox>
+                        <b-form-checkbox
+                            v-for="category in categoriesList"
+                            v-model="filters.categories"
+                            :key="'category-filter-' + category.id"
+                            :value="category.id"
+                            class="d-flex justify-content-start">
+                            {{ category.title }}
+                        </b-form-checkbox>
+                    </b-form-group>
+                </b-collapse>
+                <hr/>
+
+                <div class="d-flex justify-content-between align-items-center mb-3" 
+                    @click="filtersCollapse.timeToPrepare = !filtersCollapse.timeToPrepare">
+                    <span>Time to prepare</span>
+                    <b-icon-chevron-up :rotate="filtersCollapse.timeToPrepare ? 180 : 0"></b-icon-chevron-up>
+                </div>
+                <b-collapse id="filters-collapse-time-to-prepare" :visible="filtersCollapse.timeToPrepare">
+                    <b-form-input type="range"
+                        v-model="filters.timeToPrepare.value" 
+                        :min="filters.timeToPrepare.min" 
+                        :max="filters.timeToPrepare.max"
+                        step="1">
+                    </b-form-input>
+                    <p>{{filters.timeToPrepare.value}}</p>
+                </b-collapse>
+                <hr/>
+
+                <div class="d-flex justify-content-between align-items-center mb-3" 
+                    @click="filtersCollapse.difficult = !filtersCollapse.difficult">
+                    <span>Difficult</span>
+                    <b-icon-chevron-up :rotate="filtersCollapse.difficult ? 180 : 0"></b-icon-chevron-up>
+                </div>
+                <b-collapse id="filters-collapse-difficult" :visible="filtersCollapse.difficult">
+                    <b-form-group>
+                        <b-form-rating v-model="filters.difficult" 
+                            show-clear>
+                        </b-form-rating>
+                    </b-form-group>
+                </b-collapse>
+                <hr/>
+
+                <div class="d-flex justify-content-between align-items-center mb-3" 
+                    @click="filtersCollapse.ingredients = !filtersCollapse.ingredients">
+                    <span>Ingredients</span>
+                    <b-icon-chevron-up :rotate="filtersCollapse.ingredients ? 180 : 0"></b-icon-chevron-up>
+                </div>
+                <b-collapse id="filters-collapse-ingredients" :visible="filtersCollapse.ingredients">
+                    <b-form-input v-model="filters.ingredients.searchText" class="mb-10"></b-form-input>
+                    <div style="height: 400px; overflow-y: auto;">
+                        <b-form-group>
+                            <b-form-checkbox
+                                v-for="(ingredient, index) of ingredientsList"
+                                v-model="filters.ingredients.selected"
+                                :key="'ingredient-filter-' + index"
+                                :value="ingredient"
+                                class="d-flex justify-content-start">
+                                {{ingredient}}
+                            </b-form-checkbox>
+                        </b-form-group>
+                    </div>
+                </b-collapse>
+                <hr/>
+
+                
+            </b-col>
+
+            <b-col class="col-9">
+                <b-container class="d-flex flex-column justify-content-between h-100">
+                    <b-row>
+                        <b-col v-for="recipe of showRecipes.recipes" 
+                            :key="`category-recipe-${recipe.id}`" 
+                            class="col-3"
+                            @click="openRecipePage(recipe.id)">
+                            
+                            <figure>
+                                <img :src="getFirstImage(recipe.photography, 'small')"/>
+                            </figure>
+
+
+                            <p>{{recipe.title}}</p>
+                        </b-col>
+
+                        
+                    </b-row>
+                    <b-row>
+                        <b-col class="col-12 d-flex justify-content-center">
+                            <b-pagination
+                                v-model="currentPage"
+                                :total-rows="showRecipes.totalLength"
+                                :per-page="recipesPerPage"
+                            ></b-pagination>
+                        </b-col>
+                    </b-row>
+                </b-container>
+            </b-col>
+
+        </b-row>
+    </b-container>
+</div>
