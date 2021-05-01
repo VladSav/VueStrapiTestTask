@@ -1,0 +1,17 @@
+.swiper-component {
+    // display: flex;
+    // height: 70vh;
+
+    picture {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-height: 70vh;
+
+        img {
+            object-fit: cover;
+            width:100%;
+            height: auto;
+        }
+    }
+}
