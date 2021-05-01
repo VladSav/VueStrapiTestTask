@@ -1,0 +1,1 @@
+# Vlad Savilo test task Vue.js + Strapi
