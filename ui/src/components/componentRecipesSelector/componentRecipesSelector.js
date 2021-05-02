@@ -47,28 +47,25 @@ export default {
         }
     },
     created() {
-        let arrayOfRecipesTime = this.recipes.map(recipe => recipe.time_to_prepare)
+        const arrayOfRecipesTime = this.recipes.map(recipe => recipe.time_to_prepare)
         this.filters.timeToPrepare = Object.assign(this.filters.timeToPrepare, {
             min: Math.min(...arrayOfRecipesTime),
             max: Math.max(...arrayOfRecipesTime),
-            value: Math.max(...arrayOfRecipesTime),
         })
 
-        if (Object.keys(this.$route.query)) {
-            this.filters.searchText = this.$route.query.searchText || ''
-            this.filters.timeToPrepare.value = this.$route.query.timeToPrepare || this.filters.timeToPrepare.max
-            this.filters.difficult = +this.$route.query.difficult || null
-            this.filters.ingredients.selected = this.$route.query?.ingredients?.length ? this.$route.query.ingredients : []
+        this.filters.searchText = this.$route.query.searchText || ''
+        this.filters.timeToPrepare.value = this.$route.query.timeToPrepare || this.filters.timeToPrepare.max
+        this.filters.difficult = +this.$route.query.difficult || null
+        this.filters.ingredients.selected = this.$route.query.ingredient.length ? this.$route.query.ingredient : []
 
-            // Liitle bit difficult, but I need to check empty array and convert values in rout into numbers
-            this.filters.categories = this.$route.query?.categories?.length ? 
-                this.$route.query.categories == 'none' 
-                    ? [] 
-                    : Array.isArray(this.$route.query.categories)
-                        ? this.$route.query.categories.map(category => +category)
-                        : [+this.$route.query.categories]
-                : this.categoriesList.map(category => category.id)
-        }
+        // Liitle bit difficult, but I need to check empty array and convert values into numbers
+        this.filters.categories = this.$route.query?.categories?.length ? 
+            this.$route.query.categories == 'none' 
+                ? [] 
+                : Array.isArray(this.$route.query.categories)
+                    ? this.$route.query.categories.map(category => +category)
+                    : [+this.$route.query.categories]
+            : this.categoriesList.map(category => category.id)
     },
     mounted() {
     },
@@ -210,7 +207,7 @@ export default {
                 query.difficult = this.filters.difficult
             }
             if (this.filters.ingredients.selected.length) {
-                query.ingredients = this.filters.ingredients.selected
+                query.ingredient = this.filters.ingredients.selected
             }
             this.$router.push({path: "/", query: query});
         },
