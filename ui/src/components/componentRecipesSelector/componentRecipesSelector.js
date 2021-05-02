@@ -53,6 +53,22 @@ export default {
             max: Math.max(...arrayOfRecipesTime),
             value: Math.max(...arrayOfRecipesTime),
         })
+
+        if (Object.keys(this.$route.query)) {
+            this.filters.searchText = this.$route.query.searchText || ''
+            this.filters.timeToPrepare.value = this.$route.query.timeToPrepare || this.filters.timeToPrepare.max
+            this.filters.difficult = this.$route.query.difficult || null
+            this.filters.ingredients.selected = this.$route.query?.ingredients?.length ? this.$route.query.ingredients : []
+
+            // Liitle bit difficult, but I need to check empty array and convert values in rout into numbers
+            this.filters.categories = this.$route.query?.categories?.length ? 
+                this.$route.query.categories == 'none' 
+                    ? [] 
+                    : Array.isArray(this.$route.query.categories)
+                        ? this.$route.query.categories.map(category => +category)
+                        : [+this.$route.query.categories]
+                : this.categoriesList.map(category => category.id)
+        }
     },
     mounted() {
     },
@@ -132,15 +148,12 @@ export default {
                     categories = categories.concat(curCat)
                 })
                 
-                const result = Array.from(new Set(categories.map(cat => cat.id))).map(id => {
+                return Array.from(new Set(categories.map(cat => cat.id))).map(id => {
                     return {
                         id: id,
                         title: categories.find(cat => cat.id === id).title,
                     }
-                })
-
-                this.filters.categories = result.map(category => category.id)
-                return result
+                }).sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
             }
             return  []
         },
@@ -180,10 +193,30 @@ export default {
         },
         toggleAllCategories(checked) {
             this.filters.categories = checked ? this.categoriesList.map(category => category.id) : []
+            this.setQueries()
+        },
+        setQueries() {
+            let query = {}
+            if (this.filters.searchText) {
+                query.searchText = this.filters.searchText
+            } 
+            if (this.filters.categories.length !== this.categoriesList.length) {
+                query.categories = this.filters.categories.length ? this.filters.categories.sort((a,b) => a - b) : 'none'
+            }
+            if (this.filters.timeToPrepare.value != this.filters.timeToPrepare.max) {
+                query.timeToPrepare = this.filters.timeToPrepare.value
+            }
+            if (this.filters.difficult) {
+                query.difficult = this.filters.difficult
+            }
+            if (this.filters.ingredients.selected.length) {
+                query.ingredients = this.filters.ingredients.selected
+            }
+            this.$router.push({path: "/", query: query});
         },
         scrollToTop() {
             document.querySelector(".card-deck").scrollIntoView()
-        }
+        },
     },
     beforeDestroy() {
     }
