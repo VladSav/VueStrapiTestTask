@@ -1,11 +1,9 @@
-import { BIcon, BIconArrowUp, BIconArrowDown, BIconChevronUp } from 'bootstrap-vue'
+import { BIcon, BIconChevronUp } from 'bootstrap-vue'
 
 export default {
     name: 'RecipesSelector',
     components: {
         BIcon,
-        BIconArrowUp,
-        BIconArrowDown,
         BIconChevronUp,
     },
     props: {
@@ -16,7 +14,6 @@ export default {
     },
     data() {
         return {
-            // recipes: [],
             currentPage: 1,
             recipesPerPage: 12,
 
@@ -50,8 +47,6 @@ export default {
         }
     },
     created() {
-        // this.getData()
-
         let arrayOfRecipesTime = this.recipes.map(recipe => recipe.time_to_prepare)
         this.filters.timeToPrepare = Object.assign(this.filters.timeToPrepare, {
             min: Math.min(...arrayOfRecipesTime),
@@ -83,7 +78,6 @@ export default {
                 const positionStart = (this.currentPage - 1) * this.recipesPerPage,
                     positionEnd = ((this.currentPage - 1) * this.recipesPerPage) + this.recipesPerPage
 
-
                 if (this.filters.searchText) {
                     recipes = recipes.filter(
                         recipe => recipe.title.toLowerCase().indexOf(this.filters.searchText.toLowerCase()) > -1
@@ -103,11 +97,9 @@ export default {
                         )
                     )
                 }
-                    
-                // Filter by time_to_prepare
+
                 recipes = recipes.filter(recipe => recipe.time_to_prepare <= this.filters.timeToPrepare.value)
 
-                // Filter by categories
                 recipes = recipes.filter(
                     recipe => recipe.categories.some(
                         category =>  this.filters.categories.includes(category.id)
@@ -182,15 +174,16 @@ export default {
         openRecipePage(id) {
             this.$router.push({ name: 'Recipe', params: { id: id } })
         },
-
         removeTagByIndex(index) {
             this.delete ? this.delete(index, this.deleteKey) : this.$root.$emit(this.deleteEmit, { index:index, key:this.deleteKey})
             this.$refs.formSelectTags.showMenu()
         },
         toggleAllCategories(checked) {
             this.filters.categories = checked ? this.categoriesList.map(category => category.id) : []
+        },
+        scrollToTop() {
+            document.querySelector(".card-deck").scrollIntoView()
         }
-
     },
     beforeDestroy() {
     }

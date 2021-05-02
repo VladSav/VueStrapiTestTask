@@ -1,6 +1,11 @@
 
 .recipes-selector {
 
+    &__filters {
+        position: sticky;
+        top: 10px;
+    }
+
     .recipe {
 
         .card {

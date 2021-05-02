@@ -391,6 +391,11 @@ figure img {
   justify-content: center;
   height: 100vh
 }
+.recipes-selector__filters {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px
+}
 .recipes-selector .recipe .card {
   cursor: pointer
 }
