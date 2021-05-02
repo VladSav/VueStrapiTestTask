@@ -1,5 +1,8 @@
-<div class="recipe-page mt-40 mb-40">
-    <b-container v-if="recipe" class="recipe">
+<div class="recipe-page ">
+
+    <SpinnerComponent v-if="showSpinner"></SpinnerComponent>
+
+    <b-container v-else class="recipe mt-40 mb-40">
 
         <b-row class="mb-20 d-flex align-items-center">
             <b-col class="col-10 col-sm-2">

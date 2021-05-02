@@ -8,10 +8,15 @@ export default {
         BIconArrowDown,
         BIconChevronUp,
     },
-    props: {},
+    props: {
+        recipes: {
+            type: Array,
+            default: [],
+        }
+    },
     data() {
         return {
-            recipes: [],
+            // recipes: [],
             currentPage: 1,
             recipesPerPage: 12,
 
@@ -45,7 +50,14 @@ export default {
         }
     },
     created() {
-        this.getData()
+        // this.getData()
+
+        let arrayOfRecipesTime = this.recipes.map(recipe => recipe.time_to_prepare)
+        this.filters.timeToPrepare = Object.assign(this.filters.timeToPrepare, {
+            min: Math.min(...arrayOfRecipesTime),
+            max: Math.max(...arrayOfRecipesTime),
+            value: Math.max(...arrayOfRecipesTime),
+        })
     },
     mounted() {
     },
@@ -164,26 +176,8 @@ export default {
         },
     },
     methods: {
-        getData() {
-            this.$axios({
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: 'http://localhost:1337/Recipes',
-            }).then(response => {
-                this.recipes = response.data
-
-                let arrayOfRecipesTime = response.data.map(recipe => recipe.time_to_prepare)
-                this.filters.timeToPrepare = Object.assign(this.filters.timeToPrepare, {
-                    min: Math.min(...arrayOfRecipesTime),
-                    max: Math.max(...arrayOfRecipesTime),
-                    value: Math.max(...arrayOfRecipesTime),
-                })
-            })
-        },
         getFirstImage(images, format = 'thumbnail') {
-            return images[0] ? 'http://localhost:1337' + images[0]?.formats[format].url : '@/assets/logo.png'
+            return images[0] ? process.env.VUE_APP_LOCALE_STRAPI + images[0]?.formats[format].url : '@/assets/logo.png'
         },
         openRecipePage(id) {
             this.$router.push({ name: 'Recipe', params: { id: id } })

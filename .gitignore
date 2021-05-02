@@ -132,7 +132,8 @@ coverage
 # Strapi
 ############################
 
-.env
+# Only because it's test task. I NEVER DID IT ON REAL PROJECTS!
+# .env
 license.txt
 exports
 *.cache

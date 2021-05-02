@@ -1,13 +1,18 @@
 <b-container fluid class="main-page">
-    <b-row class="mb-50">
-        <b-col class="col-12 pl-0 pr-0">
-            <SliderComponent></SliderComponent>
-        </b-col>
-    </b-row>
 
-    <b-row>
-        <b-col class="col-12">
-            <RecipesSelector></RecipesSelector>
-        </b-col>
-    </b-row>
+    <SpinnerComponent v-if="showSpinner"></SpinnerComponent>
+
+    <template v-else>
+        <b-row class="mb-50">
+            <b-col class="col-12 pl-0 pr-0">
+                <SliderComponent :slides="slides"></SliderComponent>
+            </b-col>
+        </b-row>
+        
+        <b-row>
+            <b-col class="col-12">
+                <RecipesSelector :recipes="recipes"></RecipesSelector>
+            </b-col>
+        </b-row>
+    </template>
 </b-container>
