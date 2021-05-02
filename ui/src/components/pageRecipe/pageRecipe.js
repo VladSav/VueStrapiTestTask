@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             // @ is an alias to /src
-            recipe: {}
+            recipe: null
         }
     },
     created() {

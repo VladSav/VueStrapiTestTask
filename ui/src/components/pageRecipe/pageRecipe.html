@@ -1,13 +1,87 @@
-<b-container fluid class="recipe-page">
+<b-container v-if="recipe" class="recipe recipe-page mt-40 mb-40">
+
+    <b-row class="mb-20 d-flex align-items-center">
+        <b-col class="col-10 col-sm-2">
+            <b-button variant="outline-warning">Back</b-button>
+        </b-col>
+        <b-col class="col-12 col-sm-10">
+            <h1 class="recipe__title">{{recipe.title}}</h1>
+        </b-col>
+    </b-row>
+
     <b-row>
-        <b-col class="col-6">
+        <b-col class="col-12 col-md-8">
             <figure>
-                <img :src="getImage(recipe, 'large')"/>
+                <img :src="getImage(recipe, 'medium')"/>
             </figure>
         </b-col>
-        <b-col class="col-6">
-            <p>{{recipe.title}}</p>
-            <p>{{recipe}}</p>
+        <b-col class="col-12 col-md-4 recipe__common-info">
+            <div class="recipe__author mb-20">
+                <p class="title">Author</p>
+                <p class="mb-0">{{recipe.author ? recipe.author.username : 'unknown'}}</p>
+            </div>
+
+            <div class="recipe__categories mb-20">
+                <p class="title">Categories</p>
+                <ul >
+                    <li v-for="category of recipe.categories" :key="'recipe-categories-' + category.id">
+                        {{category.title}}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="recipe__time mb-20">
+                <p class="title">Time to prepare</p>
+                <p class="mb-0">{{recipe.time_to_prepare ? recipe.time_to_prepare + ' minutes' : 'unknown'}}</p>
+            </div>
+
+            <div class="recipe__difficulty mb-20">
+                <p class="title">Difficulty</p>
+                <div>
+                    <img v-for="diff of recipe.difficult" :key="'recipe-difficult-solid-' + diff" src="@/assets/star-solid.svg" alt="star solid"/>
+                    <img v-for="diff of (5 - (recipe.difficult || 0))" :key="'recipe-difficult-regular-' + diff" src="@/assets/star-regular.svg" alt="star solid"/>
+                </div>
+            </div>
+            
+            <div v-if="recipe.special_tools_needed.length" class="recipe__special-tools mb-20">
+                <p class="title">Special tools:</p>
+                <ul>
+                    <li v-for="specialTool of recipe.special_tools_needed" :key="'recipe-special-tool-' + specialTool.id">
+                        {{specialTool.title}}
+                    </li>
+                </ul>
+            </div>
+        </b-col>
+
+        <b-col class="col-12">
+            <hr/>
+        </b-col>
+
+        <b-col class="col-12 mt-20 mb-20">
+            
+            <h2>Ingredients</h2>
+            <div>
+                <ul class="recipe__ingredients">
+                    <li v-for="ingredient of recipe.ingredients" :key="'recipe-ingredients-' + ingredient.id">
+                        {{ingredient.title}}
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+        </b-col>
+
+        <b-col class="col-12 recipe__directions mb-20">
+            <h2>Directions</h2>
+            <div class="recipe__directions-text" v-html="recipe.directions"></div>
+            <hr class="mt-40"/>
+        </b-col>
+    </b-row>
+
+    <b-row v-if="recipe.comments.length">
+        <b-col v-for="comment of recipe.comments" :key="'recipe-comments-' + comment.id" class="recipe__comment col-12">
+            <blockquote class="blockquote">
+                <p>{{comment.content}}</p>
+            </blockquote>
         </b-col>
     </b-row>
 </b-container>

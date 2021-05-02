@@ -290,6 +290,11 @@
   margin: 0;
   padding: 0
 }
+figure {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
+}
 figure img {
   width: 100%;
   vertical-align: middle
@@ -307,4 +312,88 @@ figure img {
   object-fit: cover;
   width: 100%;
   height: auto
+}
+.recipe h2,
+.recipe h3 {
+  margin-bottom: 20px
+}
+.recipe .title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px
+}
+.recipe__common-info p {
+  line-height: 1
+}
+.recipe__title {
+  text-align: center
+}
+.recipe__author {
+  text-align: left
+}
+.recipe__categories-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px
+}
+.recipe__categories ul {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  list-style: none;
+  margin-bottom: 0
+}
+.recipe__categories ul li {
+  padding: 6px 18px;
+  margin: 0 12px 10px 0;
+  border: 1px solid #000;
+  border-radius: 20px
+}
+.recipe__categories ul li:last-child {
+  margin-right: 0
+}
+.recipe__difficulty div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start
+}
+.recipe__difficulty div img {
+  max-height: 20px;
+  margin: 2px 0
+}
+.recipe__special-tools ul {
+  padding-left: 20px;
+  margin-bottom: 0
+}
+.recipe__special-tools ul li {
+  text-align: left
+}
+.recipe__ingredients {
+  display: inline-block;
+  padding-left: 20px
+}
+@media (min-width:576px) {
+  .recipe__ingredients {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2
+  }
+}
+.recipe__ingredients li {
+  text-align: left;
+  margin-right: 50px
+}
+.recipe__directions-text {
+  white-space: break-spaces
 }
