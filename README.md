@@ -23,7 +23,6 @@ The simplest way to run the project is:
 2. use comand **npm run dev**
 3. open [http://localhost:8080](http://localhost:8080) in your browser
 
-
 If you want compilev files in production mode:
 
 1. open folder ***./ui*** 
@@ -31,7 +30,10 @@ If you want compilev files in production mode:
 3. copy all from ***./ui/dist*** folder to your server or use some program like **Open Server**
 4. open it
 
+---
 
 ## Vue + Strapi
 
-If you need to change strapi host you can do it in ./ui/.env file. Only because it's test task you can see this file in GitHub.
+If you need to change strapi host you can do it in ***./ui/.env*** file. 
+
+Only because it's test task you can see this file in GitHub.
