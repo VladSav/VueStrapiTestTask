@@ -379,6 +379,35 @@ figure img {
   width: 100%;
   vertical-align: middle
 }
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before,
+.custom-control-input:checked ~ .custom-control-label::before,
+.page-item.active .page-link {
+  border-color: #e5861f;
+  background-color: #e5861f
+}
+.btn-outline-warning {
+  color: #e5861f;
+  border-color: #e5861f
+}
+.btn-outline-warning:hover {
+  background-color: #e5861f;
+  border-color: #e5861f
+}
+.page-link {
+  color: #e5861f
+}
+.page-link:hover {
+  color: #eaa854
+}
+.custom-range::-webkit-slider-thumb {
+  background: #e5861f
+}
+.custom-range::-moz-range-thumb {
+  background: #e5861f
+}
+.custom-range::-ms-thumb {
+  background: #e5861f
+}
 .spinner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -487,11 +516,13 @@ figure img {
   position: absolute;
   left: 10%;
   top: 15%;
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 500;
   line-height: 1.2;
   text-transform: uppercase;
-  max-width: 320px
+  max-width: 380px;
+  cursor: -webkit-grab;
+  cursor: grab
 }
 @media (max-width:768px) {
   .swiper-component .swiper-slide__text {
@@ -510,7 +541,12 @@ figure img {
   display: flex;
   width: 100%;
   height: 100%;
-  max-height: 70vh
+  max-height: 70vh;
+  cursor: -webkit-grab;
+  cursor: grab
+}
+.swiper-component picture.withUrl {
+  cursor: pointer
 }
 .swiper-component picture img {
   -o-object-fit: cover;
@@ -557,7 +593,9 @@ figure img {
 .recipe-page .recipe__categories ul li {
   padding: 6px 18px;
   margin: 0 12px 10px 0;
-  border: 1px solid #000;
+  color: #fff;
+  border: 1px solid #e5861f;
+  background-color: #e5861f;
   border-radius: 20px
 }
 .recipe-page .recipe__categories ul li:last-child {

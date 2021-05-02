@@ -12,3 +12,36 @@ figure {
 		vertical-align: middle;
 	}
 }
+
+.custom-control-input:checked ~ .custom-control-label::before,
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before,
+.page-item.active .page-link {
+	border-color: $orange;
+    background-color: $orange;
+}
+
+.btn-outline-warning {
+    color: $orange;
+    border-color: $orange;
+}
+.btn-outline-warning:hover {
+	background-color: $orange;
+    border-color: $orange;
+}
+
+.page-link {
+	color: $orange;
+}
+.page-link:hover {
+	color: $orangeLg;
+}
+
+.custom-range::-webkit-slider-thumb {
+	background: $orange;
+} 
+.custom-range::-moz-range-thumb {
+	background: $orange;
+}
+.custom-range::-ms-thumb {
+	background: $orange;
+}

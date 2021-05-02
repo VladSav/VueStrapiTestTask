@@ -43,7 +43,9 @@
                 li {
                     padding: 6px 18px;
                     margin: 0 12px 10px 0;
-                    border: 1px solid #000;
+                    color: $white;
+                    border: 1px solid $orange;
+                    background-color: $orange;
                     border-radius: 20px;
                     
                     &:last-child {
