@@ -10,8 +10,7 @@ export default {
     },
     data() {
         return {
-            swiperOption: {
-            },
+            swiperOption: {},
             imageHost: process.env.VUE_APP_LOCALE_STRAPI,
         }
     },
@@ -32,6 +31,11 @@ export default {
                 return []
             }
         },
+        openLink(slide) {
+            if (slide.link) {
+                window.open(slide.link)
+            }
+        }
     },
     beforeDestroy() {
     }

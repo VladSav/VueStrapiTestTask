@@ -2,7 +2,10 @@
     <div v-swiper:mainPageSwiper="swiperOption">
         <div class="swiper-wrapper">
             <div class="swiper-slide" :key="'main-page-slide-' + slide.id" v-for="slide in slides">
-                <picture>
+
+                <p class="swiper-slide__text">{{slide.text}}</p>
+
+                <picture @click="openLink(slide)" :class="{'withUrl': slide.link}">
                     <source v-for="(image, index) of getImageFormats(slide)" 
                         :key="`swiper-source-${slide.id}-${index}`"
                         :media="`(min-width: ${image.width}px)`" 
