@@ -57,7 +57,7 @@ export default {
         if (Object.keys(this.$route.query)) {
             this.filters.searchText = this.$route.query.searchText || ''
             this.filters.timeToPrepare.value = this.$route.query.timeToPrepare || this.filters.timeToPrepare.max
-            this.filters.difficult = this.$route.query.difficult || null
+            this.filters.difficult = +this.$route.query.difficult || null
             this.filters.ingredients.selected = this.$route.query?.ingredients?.length ? this.$route.query.ingredients : []
 
             // Liitle bit difficult, but I need to check empty array and convert values in rout into numbers
