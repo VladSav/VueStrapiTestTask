@@ -6,7 +6,7 @@
 
         <b-row class="mb-20 d-flex align-items-center">
             <b-col class="col-10 col-sm-2">
-                <b-button variant="outline-warning">Back</b-button>
+                <b-button @click="getBack" variant="outline-warning">Back</b-button>
             </b-col>
             <b-col class="col-12 col-sm-10">
                 <h1 class="recipe__title">{{recipe.title}}</h1>
@@ -54,6 +54,14 @@
                             {{specialTool.title}}
                         </li>
                     </ul>
+                </div>
+
+                <div class="recipe__like">
+                    <img v-if="likeWasSended" src="@/assets/heart-solid.svg" alt="I like it"/>
+                    <img v-else class="send" src="@/assets/heart-regular.svg" alt="I like it" @click="sendLike()"/>
+                    <span>
+                        {{recipe.likes || 0}}
+                    </span>
                 </div>
             </b-col>
 

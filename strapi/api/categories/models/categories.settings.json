@@ -18,8 +18,8 @@
       "unique": true
     },
     "recipes": {
-      "collection": "recipe",
       "via": "categories",
+      "collection": "recipe",
       "dominant": true
     },
     "image": {

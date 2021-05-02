@@ -56,7 +56,7 @@ export default {
         this.filters.searchText = this.$route.query.searchText || ''
         this.filters.timeToPrepare.value = this.$route.query.timeToPrepare || this.filters.timeToPrepare.max
         this.filters.difficult = +this.$route.query.difficult || null
-        this.filters.ingredients.selected = this.$route.query.ingredient.length ? this.$route.query.ingredient : []
+        this.filters.ingredients.selected = this.$route.query?.ingredient?.length ? this.$route.query.ingredient : []
 
         // Liitle bit difficult, but I need to check empty array and convert values into numbers
         this.filters.categories = this.$route.query?.categories?.length ? 

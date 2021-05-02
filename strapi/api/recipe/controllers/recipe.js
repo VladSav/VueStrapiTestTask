@@ -20,4 +20,27 @@ module.exports = {
         }
         return sanitizeEntity(entity, { model: strapi.models.comments });
     },
+
+    /**
+     * Update likes in recipe
+     *
+     * @return {Object}
+     */
+     async likes(ctx) {
+        let entity;
+        if (ctx.is('multipart')) {
+            const { data, files } = parseMultipartData(ctx);
+            entity = await strapi.services.recipe.update({ id: ctx.params.id }, data, {
+                files,
+            });
+        } else {
+            let s = await strapi.services.recipe.findOne({ id: ctx.params.id });
+            console.log(s.likes)
+            entity = await strapi.services.recipe.update({ id: ctx.params.id }, {
+                likes: (s.likes || 0) + 1
+            });
+        }
+    
+        return sanitizeEntity(entity, { model: strapi.models.recipe });
+    },
 };

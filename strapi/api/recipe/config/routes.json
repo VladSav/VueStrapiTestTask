@@ -55,6 +55,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/recipes/:id/likes",
+      "handler": "recipe.likes",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

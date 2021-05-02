@@ -542,6 +542,22 @@ figure img {
 .recipe-page .recipe__categories ul li:last-child {
   margin-right: 0
 }
+.recipe-page .recipe__like {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.recipe-page .recipe__like img {
+  max-height: 20px;
+  margin-right: 10px
+}
+.recipe-page .recipe__like .send {
+  cursor: pointer
+}
 .recipe-page .recipe__difficulty div {
   display: -webkit-box;
   display: -ms-flexbox;

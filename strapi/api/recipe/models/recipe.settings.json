@@ -59,8 +59,12 @@
       "via": "recipe"
     },
     "categories": {
-      "via": "recipes",
-      "collection": "categories"
+      "collection": "categories",
+      "via": "recipes"
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
