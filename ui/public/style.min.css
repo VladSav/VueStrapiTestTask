@@ -379,33 +379,33 @@ figure img {
   width: 100%;
   vertical-align: middle
 }
-.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before,
-.custom-control-input:checked ~ .custom-control-label::before,
-.page-item.active .page-link {
+body .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before,
+body .custom-control-input:checked ~ .custom-control-label::before,
+body .page-item.active .page-link {
   border-color: #e5861f;
   background-color: #e5861f
 }
-.btn-outline-warning {
+body .btn-outline-warning {
   color: #e5861f;
   border-color: #e5861f
 }
-.btn-outline-warning:hover {
+body .btn-outline-warning:hover {
   background-color: #e5861f;
   border-color: #e5861f
 }
-.page-link {
+body .page-link {
   color: #e5861f
 }
-.page-link:hover {
+body .page-link:hover {
   color: #eaa854
 }
-.custom-range::-webkit-slider-thumb {
+body .custom-range::-webkit-slider-thumb {
   background: #e5861f
 }
-.custom-range::-moz-range-thumb {
+body .custom-range::-moz-range-thumb {
   background: #e5861f
 }
-.custom-range::-ms-thumb {
+body .custom-range::-ms-thumb {
   background: #e5861f
 }
 .spinner {
