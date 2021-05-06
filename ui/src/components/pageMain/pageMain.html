@@ -11,7 +11,82 @@
         
         <b-row>
             <b-col class="col-12">
-                <RecipesSelector :recipes="recipes"></RecipesSelector>
+                <div class="recipes-selector mb-30">
+                    <b-container>
+                        <b-row class="pt-20">
+                
+                            <b-col class="col-12 col-md-4 col-lg-3">
+                                <div class="recipes-selector__filters">
+                                    <h2>Filters</h2>
+                                    <filterByText></filterByText>
+                                    <filterByCategories :categoriesList="filters.categories"></filterByCategories>
+                                    <filterByTime :minTime="filters.time.min" :maxTime="filters.time.max"></filterByTime>
+                                    <filterByDifficulty></filterByDifficulty>
+                                    <filterByIngredients :ingredientsList="filters.ingredients"></filterByIngredients>
+                                </div>
+                            </b-col>
+                
+                            <b-col class="col-12 col-md-8 col-lg-9">
+                                <b-card-group deck>
+                                    <b-col v-for="(recipe, index) of recipes" 
+                                        :key="`category-recipe-${recipe.id}-${index}`"
+                                        class="recipe position-relative col-12 col-lg-6 col-xl-4 mb-30">
+                                     
+                                        <b-card 
+                                            @click="openRecipePage(recipe.id)"
+                                            class="h-100 animated fadeInDown ml-0 mr-0"
+                                            :class="'delay-' + (index * 50)"
+                                            :title="recipe.title"
+                                            title-tag="h4"
+                                            img-top
+                                            img-alt="recipe.title"
+                                            :img-src="getImage(recipe.photography)">
+                                            <b-card-text text-tag="div">
+                                                <div class="recipe__time-to-prepare">
+                                                    <img src="@/assets/clock-regular.svg" alt="clocs icon"/>
+                                                    <span>{{recipe.time_to_prepare}} minutes</span>
+                                                </div>
+                
+                                                <div class="recipe__categories">
+                                                    <ul>
+                                                        <li v-for="category of recipe.categories" :key="'recipe-categories-' + category.id">
+                                                            {{category.title}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </b-card-text>
+                                            <template #footer>
+                                                <small class="text-muted">
+                                                    <div class="recipe__difficult">
+                                                        <p>Difficult</p>
+                                                        <img v-for="diff of recipe.difficult"
+                                                            :key="`recipe-difficult-solid-${recipe.id}-${diff}`"
+                                                            src="@/assets/star-solid.svg" alt="star solid"/>
+                                                        <img v-for="diff of (5 - (recipe.difficult || 0))"
+                                                            :key="`recipe-difficult-regular-${recipe.id}-${diff}`"
+                                                            src="@/assets/star-regular.svg" alt="star solid"/>
+                                                    </div>
+                                                </small>
+                                            </template>
+                                        </b-card>
+                                    </b-col>
+
+                                </b-card-group>
+                                <b-row>
+                                    <b-col class="col-12 d-flex justify-content-center">
+                                        <b-pagination
+                                            v-model="currentPage"
+                                            :total-rows="totalCountRecipes"
+                                            :per-page="recipesPerPage"
+                                            @change="scrollToTop"
+                                        ></b-pagination>
+                                    </b-col>
+                                </b-row>
+                            </b-col>
+                
+                        </b-row>
+                    </b-container>
+                </div>
             </b-col>
         </b-row>
     </template>

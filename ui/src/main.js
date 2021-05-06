@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import { BootstrapVue } from 'bootstrap-vue'
+import { BootstrapVue, BIcon, BIconChevronUp } from 'bootstrap-vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -14,6 +14,8 @@ Vue.prototype.$axios = axios;
 
 Vue.use(BootstrapVue)
 Vue.use(VueAwesomeSwiper)
+Vue.component('BIcon', BIcon)
+Vue.component('BIconChevronUp', BIconChevronUp)
 
 new Vue({
   router,
