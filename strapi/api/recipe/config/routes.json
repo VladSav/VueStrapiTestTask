@@ -18,6 +18,22 @@
     },
     {
       "method": "GET",
+      "path": "/recipes/custom",
+      "handler": "recipe.findCustom",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/recipes/filters",
+      "handler": "recipe.getFiltersInfo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/recipes/:id",
       "handler": "recipe.findOne",
       "config": {
