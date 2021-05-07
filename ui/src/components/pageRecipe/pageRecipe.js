@@ -8,7 +8,6 @@ export default {
     props: {},
     data() {
         return {
-            // @ is an alias to /src
             recipe: null,
             showSpinner: true,
             likeWasSended: false,

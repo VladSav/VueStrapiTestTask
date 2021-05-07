@@ -12,13 +12,3 @@ $sides: (top, bottom, left, right); // Leave this variable alone
     }
   }
 }
-
-@mixin animation-delay() {
-  @for $i from 0 to 20  {
-    .delay-#{$i*50} {
-      animation-delay: #{50 * $i}ms;
-    }
-  }
-}
-
-@include animation-delay();
