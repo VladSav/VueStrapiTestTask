@@ -27,17 +27,14 @@ module.exports = {
      * @return {Array}
      */
     async findCustom(ctx) {
-        let entities, count = 0
-
+        let entities
         if (ctx.query._q) {
             entities = await strapi.services.recipe.search(ctx.query);
-            count = await strapi.services.recipe.countSearch(ctx.query);
         } else {
             entities = await strapi.services.recipe.find(ctx.query);
-            count = await strapi.services.recipe.count(ctx.query);
         }
 
-        let recipes = entities.map(entity => {
+        return entities.map(entity => {
             let recipe = sanitizeEntity(entity, { model: strapi.models.recipe })
 
             return {
@@ -52,17 +49,12 @@ module.exports = {
                     : null
             }
         })
-
-        return {
-            count,
-            recipes
-        }
     },
 
     /**
      * Get info for filters
      */
-    async getFiltersInfo(ctx) {
+    async getFiltersInfo() {
         let entitiesRecipes = await strapi.services.recipe.find();
         let entitiesCategories = await strapi.services.categories.find();
 

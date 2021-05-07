@@ -42,18 +42,6 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "ingredients": {
-      "type": "dynamiczone",
-      "components": [
-        "recipes-lists.ingredients"
-      ]
-    },
-    "special_tools_needed": {
-      "type": "dynamiczone",
-      "components": [
-        "recipes-lists.special-tools-needed"
-      ]
-    },
     "comments": {
       "collection": "comments",
       "via": "recipe"
@@ -65,6 +53,16 @@
     "likes": {
       "type": "integer",
       "default": 0
+    },
+    "ingredients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "recipes-lists.ingredients"
+    },
+    "special_tools_needed": {
+      "type": "component",
+      "repeatable": true,
+      "component": "recipes-lists.special-tools-needed"
     }
   }
 }
