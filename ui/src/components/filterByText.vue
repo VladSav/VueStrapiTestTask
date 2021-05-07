@@ -7,7 +7,8 @@
     </div>
     <b-collapse id="filters-collapse-search" :visible="isOpen">
         <b-form-input v-model="searchText" 
-            placeholder="Enter the title of recipe">
+            placeholder="Enter the title of recipe"
+            debounce="400">
         </b-form-input>
     </b-collapse>
     <hr/>

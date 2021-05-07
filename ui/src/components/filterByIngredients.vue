@@ -40,17 +40,29 @@ export default {
     },
     data() {
         return {
-            ingredients: [],
+            ingredients: this.$route.query?.ingredient?.length ? this.$route.query.ingredient : [],
             isOpen: true,
             searchText: '',
         }
     },
     created() {
-        this.ingredients = this.$route.query?.ingredient?.length ? this.$route.query.ingredient : []
     },
     mounted() {
     },
     watch: {
+        ingredients: function() {
+            let query = Object.assign({}, this.$route.query)
+            if (this.ingredients.length) {
+                query.ingredient = this.ingredients
+            } else {
+                delete query.ingredient
+            }
+            this.$router.push({
+                name: "MainPage",
+                path: "/",
+                query: query
+            })
+        }
     },
     computed: {
     },

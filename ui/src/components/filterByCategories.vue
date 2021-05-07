@@ -45,7 +45,7 @@ export default {
             categories: [],
             isOpen: true,
 
-            allSelected: false,
+            allSelected: true,
             indeterminate: false,
         }
     },

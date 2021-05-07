@@ -10,7 +10,8 @@
             v-model="timeToPrepare" 
             :min="minTime" 
             :max="maxTime"
-            step="1">
+            step="1"
+            debounce="300">
         </b-form-input>
         <p><b>{{timeToPrepare}}</b> minutes</p>
     </b-collapse>
@@ -35,12 +36,11 @@ export default {
     },
     data() {
         return {
-            timeToPrepare: 0,
+            timeToPrepare: this.$route.query.timeToPrepare || this.maxTime,
             isOpen: true,
         }
     },
     created() {
-        this.timeToPrepare = this.$route.query.timeToPrepare || this.maxTime
     },
     mounted() {
     },
